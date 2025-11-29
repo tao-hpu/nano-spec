@@ -1,6 +1,6 @@
-# nano-spec
+# Nano Spec
 
-[中文版](./README_CN.md) | English
+English | [中文版](./README_CN.md)
 
 [![Stars](https://img.shields.io/github/stars/tao-hpu/nano-spec?style=social)](https://github.com/tao-hpu/nano-spec)
 [![Forks](https://img.shields.io/github/forks/tao-hpu/nano-spec?style=social)](https://github.com/tao-hpu/nano-spec/fork)
@@ -11,14 +11,37 @@
 
 A lightweight task specification methodology for AI-assisted development. Inspired by [Kiro's Spec-Driven Development](https://kiro.dev/docs/specs/), but minimal and practical.
 
+## The Problem
+
+In the age of AI-assisted development, we face a documentation dilemma:
+
+```
+No Documentation          ???          Heavy Documentation
+     |                     |                    |
+     v                     v                    v
+  "Just code it"     Sweet Spot         PRD + Design Doc
+  Fast but messy     nano-spec          + Tech Spec + ...
+  Scope creep        4 tiny docs        Complete but slow
+  Hard to handoff    Clear thinking     Docs > Code time
+```
+
+**Most tasks live in the middle** — too complex for "just do it", too simple for enterprise-grade specs.
+
 ## Why nano-spec?
 
-Modern AI coding assistants are powerful, but they work better when you know what you want. Most projects fall into a gap:
+Modern AI coding assistants (Claude Code, Cursor, Copilot, etc.) are powerful, but they work better when you know what you want. Without clear specs:
 
-- **No spec**: Works for trivial tasks, but leads to scope creep and unclear goals
-- **Heavy specs**: Great for complex features, but the overhead kills momentum
+- AI generates code that misses the point
+- You spend more time correcting than coding
+- Scope creeps because boundaries were never defined
+- Handoffs become painful knowledge transfers
 
-**nano-spec** hits the sweet spot: enough structure to think clearly, not so much that you're writing docs instead of code.
+**nano-spec** is the sweet spot between "no documentation" and "documentation overhead":
+
+- **4 documents, ~10 minutes to set up**
+- **Forces clarity before coding**
+- **AI-friendly structure** — easy for AI assistants to understand and follow
+- **Human-friendly too** — great for team handoffs and future you
 
 | Approach | Docs | Overhead | Best For |
 |:---|:---:|:---:|:---|
