@@ -11,6 +11,8 @@
 
 一个轻量级的任务规范方法论，专为 AI 辅助开发设计。灵感来自 [Kiro 的规范驱动开发](https://kiro.dev/docs/specs/)，但更简洁实用。
 
+![Nano Spec 概览](./assets/banner-cn.jpeg)
+
 ## 问题背景
 
 在 AI 辅助开发的时代，我们面临一个文档困境：

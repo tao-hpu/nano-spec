@@ -11,6 +11,8 @@ English | [中文版](./README_CN.md)
 
 A lightweight task specification methodology for AI-assisted development. Inspired by [Kiro's Spec-Driven Development](https://kiro.dev/docs/specs/), but minimal and practical.
 
+![Nano Spec Overview](./assets/banner-en.jpeg)
+
 ## The Problem
 
 In the age of AI-assisted development, we face a documentation dilemma:
