@@ -1,18 +1,30 @@
 # nano-spec
 
+[中文版](./README_CN.md) | English
+
+[![Stars](https://img.shields.io/github/stars/tao-hpu/nano-spec?style=social)](https://github.com/tao-hpu/nano-spec)
+[![Forks](https://img.shields.io/github/forks/tao-hpu/nano-spec?style=social)](https://github.com/tao-hpu/nano-spec/fork)
+[![Issues](https://img.shields.io/github/issues/tao-hpu/nano-spec)](https://github.com/tao-hpu/nano-spec/issues)
+[![License](https://img.shields.io/github/license/tao-hpu/nano-spec)](./LICENSE)
+
 > Spec-driven thinking, nano-sized docs.
 
 A lightweight task specification methodology for AI-assisted development. Inspired by [Kiro's Spec-Driven Development](https://kiro.dev/docs/specs/), but minimal and practical.
 
 ## Why nano-spec?
 
+Modern AI coding assistants are powerful, but they work better when you know what you want. Most projects fall into a gap:
+
+- **No spec**: Works for trivial tasks, but leads to scope creep and unclear goals
+- **Heavy specs**: Great for complex features, but the overhead kills momentum
+
+**nano-spec** hits the sweet spot: enough structure to think clearly, not so much that you're writing docs instead of code.
+
 | Approach | Docs | Overhead | Best For |
 |:---|:---:|:---:|:---|
 | No spec | 0 | None | Trivial tasks |
 | **nano-spec** | 4 | Low | Most tasks |
 | Kiro SPEC | 3+ | High | Complex features |
-
-**nano-spec** hits the sweet spot: enough structure to think clearly, not so much that you're writing docs instead of code.
 
 ## The 4 Documents
 
@@ -31,28 +43,6 @@ tasks/{task-name}/
 | doc.md | Technical decisions, schemas, diagrams | During & after |
 | log.md | Daily notes, blockers, discoveries | Daily |
 
-## Quick Start
-
-### Manual
-```bash
-cp -r template/ tasks/my-new-task/
-```
-
-### With Claude Code
-```
-/nano-spec create my-new-task "Brief description of the task"
-```
-
-### With Codex CLI
-```
-codex "Create a nano-spec for: my task description"
-```
-
-### With Gemini CLI
-```
-gemini "Create a nano-spec for: my task description"
-```
-
 ## Core Principles
 
 1. **Boundary first** - Define what's in/out of scope before coding
@@ -60,9 +50,70 @@ gemini "Create a nano-spec for: my task description"
 3. **Decisions documented** - Future you will thank present you
 4. **Progress logged** - Track the journey, not just the destination
 
-## Example
+## Quick Start
 
-See [examples/nhsa/](./examples/nhsa/) for a real-world example (NHSA medical insurance data integration).
+### Manual Setup
+
+```bash
+# Clone the template
+git clone https://github.com/tao-hpu/nano-spec.git
+cd nano-spec
+
+# Create a new task
+cp -r template/ tasks/my-new-task/
+```
+
+### With Claude Code
+
+```bash
+# Use the built-in slash command
+/nano-spec create my-new-task "Brief description of the task"
+```
+
+### With Codex CLI
+
+```bash
+codex "Create a nano-spec for: my task description"
+```
+
+### With Gemini CLI
+
+```bash
+# One-off prompt
+gemini -p "Create a nano-spec for: my task description"
+
+# Or interactive mode
+gemini -i "Create a nano-spec for: my task description"
+```
+
+## Installation
+
+### For Claude Code
+
+```bash
+# Copy the command to your project
+mkdir -p /your-project/.claude/commands/
+cp .claude/commands/nano-spec.md /your-project/.claude/commands/
+
+# Or copy the whole template folder
+cp -r template/ /your-project/tasks/_template/
+```
+
+### For Codex CLI
+
+```bash
+cp .codex/AGENTS.md /your-project/.codex/
+```
+
+### For Gemini CLI
+
+```bash
+# Copy to project root (Gemini CLI reads GEMINI.md hierarchically)
+cp .gemini/GEMINI.md /your-project/GEMINI.md
+
+# Or keep in .gemini folder
+cp -r .gemini/ /your-project/
+```
 
 ## Tool Support
 
@@ -70,43 +121,61 @@ See [examples/nhsa/](./examples/nhsa/) for a real-world example (NHSA medical in
 |:---|:---|:---:|
 | Claude Code | `.claude/commands/nano-spec.md` | Ready |
 | OpenAI Codex | `.codex/AGENTS.md` | Ready |
-| Gemini CLI | `.gemini/instructions.md` | Ready |
+| Gemini CLI | `GEMINI.md` or `.gemini/GEMINI.md` | Ready |
 | Cursor | Copy to `.cursorrules` | Manual |
 | Windsurf | Copy to rules | Manual |
 
-## Installation
+## Template Structure
 
-### For Claude Code
-```bash
-# Copy to your project
-cp -r .claude/commands/nano-spec.md /your-project/.claude/commands/
+Each document template is designed to be minimal yet complete:
 
-# Or copy the whole template folder
-cp -r template/ /your-project/tasks/_template/
-```
+### README.md (Context)
+- Background: Why does this task exist?
+- Goals: What are we trying to achieve?
+- Scope: What's in and out of scope?
+- Dependencies: What do we need before starting?
 
-### For Codex CLI
-```bash
-cp .codex/AGENTS.md /your-project/.codex/
-```
+### todo.md (Plan)
+- Research: What do we need to learn first?
+- Implementation: Step-by-step tasks
+- Verification: How do we validate success?
+- Acceptance Criteria: Must-have vs nice-to-have
 
-### For Gemini CLI
-```bash
-cp -r .gemini/ /your-project/
-```
+### doc.md (Output)
+- Summary: One-paragraph outcome
+- Key Decisions: Options considered and rationale
+- Technical Details: Architecture, schemas, interfaces
+- Open Questions: Unresolved issues
+
+### log.md (Journey)
+- Daily entries: Done, In Progress, Blocked, Notes
+- Captures discoveries and learnings
+- Helps with handoffs and retrospectives
+
+## Example
+
+See [examples/nhsa/](./examples/nhsa/) for a real-world example demonstrating NHSA medical insurance data integration task.
 
 ## Philosophy
 
 > "Think before you code, even with AI."
 
-AI coding assistants are powerful, but they work better when you know what you want. nano-spec is a thinking framework that happens to produce documents.
-
 The documents aren't the point. **Clarity is.**
 
-## License
+nano-spec is a thinking framework that happens to produce documents. It helps you:
 
-MIT
+- **Avoid scope creep** by defining boundaries upfront
+- **Track progress** without complex project management tools
+- **Document decisions** for future reference
+- **Enable handoffs** with clear context and history
 
 ## Contributing
 
 PRs welcome. Keep it nano.
+
+- Bug reports and feature requests: [GitHub Issues](https://github.com/tao-hpu/nano-spec/issues)
+- Improvements to templates or documentation are always appreciated
+
+## License
+
+MIT
