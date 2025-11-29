@@ -177,6 +177,62 @@ Each document template is designed to be minimal yet complete:
 - Captures discoveries and learnings
 - Helps with handoffs and retrospectives
 
+## Workflow & Commands
+
+### Step 1: Create Spec (Before Coding)
+
+| Tool | Command |
+|:---|:---|
+| Claude Code | `/nano-spec create auth-feature "User authentication with OAuth2"` |
+| Codex CLI | `codex "Create a nano-spec for: user authentication with OAuth2"` |
+| Gemini CLI | `gemini -p "Create a nano-spec for: user authentication with OAuth2"` |
+| Manual | `cp -r template/ tasks/auth-feature/` then edit files |
+
+### Step 2: During Development
+
+Keep your AI assistant informed. Paste context or ask it to update docs:
+
+```
+# Check current progress
+"Read my todo.md and tell me what's left"
+
+# Log today's work
+"Add to log.md: implemented OAuth2 callback, blocked on token refresh"
+
+# Record a decision
+"Add to doc.md: decided to use JWT instead of sessions because..."
+
+# Update task status
+"Mark 'implement login endpoint' as done in todo.md"
+```
+
+### Step 3: Handoff or Review
+
+Share the 4 files for instant context:
+
+```
+# Quick status
+"Summarize the current state from log.md and todo.md"
+
+# Full context for new team member
+"Read all 4 files in tasks/auth-feature/ and explain the project"
+
+# Scope check
+"Someone asked for feature X. Is it in scope per README.md?"
+```
+
+### Common Prompts Reference
+
+| Scenario | Prompt |
+|:---|:---|
+| Start new task | `Create a nano-spec for: [description]` |
+| Check progress | `What's the status of tasks/[name]/?` |
+| Update todo | `Mark [task] as done in todo.md` |
+| Add decision | `Document in doc.md: we chose X over Y because...` |
+| Daily log | `Add today's entry to log.md: [what you did]` |
+| Scope question | `Is [feature] in scope for this task?` |
+| Handoff | `Summarize tasks/[name]/ for a new developer` |
+
 ## Example
 
 See [examples/notification-service/](./examples/notification-service/) for a real-world example demonstrating a notification service implementation.

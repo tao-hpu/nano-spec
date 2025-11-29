@@ -177,6 +177,62 @@ cp -r .gemini/ /your-project/
 - 记录发现和心得
 - 便于交接和复盘
 
+## 工作流程与命令
+
+### 第一步：创建规范（编码前）
+
+| 工具 | 命令 |
+|:---|:---|
+| Claude Code | `/nano-spec create auth-feature "OAuth2 用户认证功能"` |
+| Codex CLI | `codex "Create a nano-spec for: OAuth2 用户认证功能"` |
+| Gemini CLI | `gemini -p "Create a nano-spec for: OAuth2 用户认证功能"` |
+| 手动 | `cp -r template/ tasks/auth-feature/` 然后编辑文件 |
+
+### 第二步：开发过程中
+
+让 AI 助手保持同步，随时更新文档：
+
+```
+# 查看当前进度
+"读一下 todo.md，告诉我还剩什么没做"
+
+# 记录今日工作
+"在 log.md 添加：实现了 OAuth2 回调，token 刷新还有问题"
+
+# 记录决策
+"在 doc.md 记录：选择 JWT 而不是 session，因为..."
+
+# 更新任务状态
+"把 todo.md 里的'实现登录接口'标记为完成"
+```
+
+### 第三步：交接或评审
+
+分享 4 个文件即可提供完整上下文：
+
+```
+# 快速了解状态
+"根据 log.md 和 todo.md 总结一下当前进度"
+
+# 新人上手
+"读一下 tasks/auth-feature/ 的 4 个文件，解释一下这个项目"
+
+# 范围确认
+"有人问能不能加功能 X，看看 README.md 里是否在范围内？"
+```
+
+### 常用提示词速查
+
+| 场景 | 提示词 |
+|:---|:---|
+| 新建任务 | `帮我创建一个 nano-spec：[描述]` |
+| 查看进度 | `tasks/[名称]/ 的状态怎么样了？` |
+| 更新任务 | `把 todo.md 里的 [任务] 标记为完成` |
+| 记录决策 | `在 doc.md 记录：我们选择 X 而不是 Y，因为...` |
+| 每日日志 | `在 log.md 添加今天的记录：[做了什么]` |
+| 范围问题 | `[功能] 在这个任务的范围内吗？` |
+| 交接说明 | `给新同事总结一下 tasks/[名称]/` |
+
 ## 示例
 
 查看 [examples/notification-service/](./examples/notification-service/) 了解真实案例，演示通知服务的实现。
