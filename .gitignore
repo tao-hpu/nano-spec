@@ -8,6 +8,9 @@ Thumbs.db
 *.swp
 *.swo
 
+# Claude Code local settings
+.claude/settings.local.json
+
 # Local task packs (example only in repo)
 tasks/
 !examples/

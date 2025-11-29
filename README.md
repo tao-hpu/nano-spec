@@ -179,7 +179,7 @@ Each document template is designed to be minimal yet complete:
 
 ## Example
 
-See [examples/nhsa/](./examples/nhsa/) for a real-world example demonstrating NHSA medical insurance data integration task.
+See [examples/notification-service/](./examples/notification-service/) for a real-world example demonstrating a notification service implementation.
 
 ## Philosophy
 

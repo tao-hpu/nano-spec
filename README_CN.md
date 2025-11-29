@@ -179,7 +179,7 @@ cp -r .gemini/ /your-project/
 
 ## 示例
 
-查看 [examples/nhsa/](./examples/nhsa/) 了解真实案例，演示医保数据集成任务。
+查看 [examples/notification-service/](./examples/notification-service/) 了解真实案例，演示通知服务的实现。
 
 ## 设计理念
 
