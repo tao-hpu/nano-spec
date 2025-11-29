@@ -22,12 +22,131 @@ Ask clarifying questions if the description is vague:
 - Are there dependencies on other work?
 
 ### Step 2: Create Files
-Generate in `tasks/{task-name}/` or project root:
+Generate in `tasks/{task-name}/` or project root, following the exact structure below:
 
-**README.md**: Background, goals, scope (in/out), dependencies
-**todo.md**: Phased tasks (research/implement/verify) + acceptance criteria
-**doc.md**: Key decisions, technical details, open questions
-**log.md**: Today's date with "Task created" entry
+#### README.md
+```markdown
+# {Task Name}
+
+## Background
+{Why does this task exist? What problem are we solving?}
+
+## Goals
+- {Goal 1}
+- {Goal 2}
+
+## Scope
+
+### In Scope
+- {What's included}
+
+### Out of Scope
+- {What's NOT included - be explicit}
+
+## Dependencies
+- [ ] {Dependency 1 - e.g., another task, external API, team decision}
+
+## Resources
+- {Link to related docs}
+- {Link to external references}
+```
+
+#### todo.md
+```markdown
+# TODO
+
+## Research
+- [ ] {Research item 1}
+- [ ] {Research item 2}
+
+## Implementation
+- [ ] {Task 1}
+- [ ] {Task 2}
+- [ ] {Task 3}
+
+## Verification
+- [ ] {Verification step}
+
+---
+
+## Acceptance Criteria
+
+### Must Have
+- [ ] {Criterion 1 - specific, measurable}
+- [ ] {Criterion 2}
+
+### Nice to Have
+- [ ] {Optional criterion}
+
+### Out of Scope
+- {Explicitly NOT part of this task's acceptance}
+```
+
+#### doc.md
+```markdown
+# {Task Name} - Technical Document
+
+## Summary
+{One paragraph summary of the solution/outcome}
+
+## Key Decisions
+
+### Decision 1: {Title}
+- **Options considered**: A, B, C
+- **Chosen**: B
+- **Rationale**: {Why B?}
+
+## Technical Details
+
+### Architecture / Data Flow
+```
+{Diagram using ASCII or describe the flow}
+```
+
+### Interfaces / Schema
+```typescript
+// Key interfaces if applicable
+interface Example {
+  id: string;
+  name: string;
+}
+```
+
+### Implementation Notes
+- {Note 1}
+- {Note 2}
+
+## Open Questions
+- [ ] {Unresolved question 1}
+- [ ] {Unresolved question 2}
+
+## References
+- {Link 1}
+- {Link 2}
+```
+
+#### log.md
+```markdown
+# Development Log
+
+## {YYYY-MM-DD}
+
+### Done
+- Task created
+
+### In Progress
+- {What's ongoing}
+
+### Blocked
+- {What's stuck and why}
+
+### Notes
+- {Discoveries, learnings, things to remember}
+
+---
+
+<!-- Copy the template above for each day -->
+```
 
 ### Step 3: Confirm
 Show user what was created and ask if adjustments needed.

@@ -75,6 +75,38 @@ tasks/{task-name}/
 3. **Decisions documented** - Future you will thank present you
 4. **Progress logged** - Track the journey, not just the destination
 
+## Installation
+
+### For Claude Code
+
+```bash
+# User-level (available in all projects)
+mkdir -p ~/.claude/commands/
+cp .claude/commands/nano-spec.md ~/.claude/commands/
+
+# Or project-level (current project only)
+mkdir -p /your-project/.claude/commands/
+cp .claude/commands/nano-spec.md /your-project/.claude/commands/
+```
+
+> **Note**: You only need the command file. When you run `/nano-spec create`, Claude will generate the 4 documents based on your description. No template folder required.
+
+### For Codex CLI
+
+```bash
+cp .codex/AGENTS.md /your-project/.codex/
+```
+
+### For Gemini CLI
+
+```bash
+# Copy to project root (Gemini CLI reads GEMINI.md hierarchically)
+cp .gemini/GEMINI.md /your-project/GEMINI.md
+
+# Or keep in .gemini folder
+cp -r .gemini/ /your-project/
+```
+
 ## Quick Start
 
 ### Manual Setup
@@ -109,35 +141,6 @@ gemini -p "Create a nano-spec for: my task description"
 
 # Or interactive mode
 gemini -i "Create a nano-spec for: my task description"
-```
-
-## Installation
-
-### For Claude Code
-
-```bash
-# Copy the command to your project
-mkdir -p /your-project/.claude/commands/
-cp .claude/commands/nano-spec.md /your-project/.claude/commands/
-
-# Or copy the whole template folder
-cp -r template/ /your-project/tasks/_template/
-```
-
-### For Codex CLI
-
-```bash
-cp .codex/AGENTS.md /your-project/.codex/
-```
-
-### For Gemini CLI
-
-```bash
-# Copy to project root (Gemini CLI reads GEMINI.md hierarchically)
-cp .gemini/GEMINI.md /your-project/GEMINI.md
-
-# Or keep in .gemini folder
-cp -r .gemini/ /your-project/
 ```
 
 ## Tool Support
@@ -223,10 +226,16 @@ Share the 4 files for instant context:
 
 ### Common Prompts Reference
 
+**Claude Code slash commands:**
+| Scenario | Command |
+|:---|:---|
+| Create new task | `/nano-spec create my-task "description"` |
+| Check progress | `/nano-spec status my-task` |
+| Update spec | `/nano-spec update my-task "what to change"` |
+
+**Natural language (all tools):**
 | Scenario | Prompt |
 |:---|:---|
-| Start new task | `Create a nano-spec for: [description]` |
-| Check progress | `What's the status of tasks/[name]/?` |
 | Update todo | `Mark [task] as done in todo.md` |
 | Add decision | `Document in doc.md: we chose X over Y because...` |
 | Daily log | `Add today's entry to log.md: [what you did]` |

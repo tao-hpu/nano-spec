@@ -75,6 +75,38 @@ tasks/{任务名}/
 3. **决策留痕** - 未来的你会感谢现在的你
 4. **进度留痕** - 记录过程，不只是结果
 
+## 安装配置
+
+### Claude Code
+
+```bash
+# 用户级别（所有项目可用）
+mkdir -p ~/.claude/commands/
+cp .claude/commands/nano-spec.md ~/.claude/commands/
+
+# 或项目级别（仅当前项目）
+mkdir -p /your-project/.claude/commands/
+cp .claude/commands/nano-spec.md /your-project/.claude/commands/
+```
+
+> **说明**：只需要命令文件即可。当你运行 `/nano-spec create` 时，Claude 会根据你的描述自动生成 4 个文档，不需要 template 文件夹。
+
+### Codex CLI
+
+```bash
+cp .codex/AGENTS.md /your-project/.codex/
+```
+
+### Gemini CLI
+
+```bash
+# 复制到项目根目录（Gemini CLI 会分层读取 GEMINI.md）
+cp .gemini/GEMINI.md /your-project/GEMINI.md
+
+# 或保留在 .gemini 文件夹
+cp -r .gemini/ /your-project/
+```
+
 ## 快速开始
 
 ### 手动设置
@@ -109,35 +141,6 @@ gemini -p "Create a nano-spec for: 我的任务描述"
 
 # 或交互模式
 gemini -i "Create a nano-spec for: 我的任务描述"
-```
-
-## 安装配置
-
-### Claude Code
-
-```bash
-# 将命令复制到你的项目
-mkdir -p /your-project/.claude/commands/
-cp .claude/commands/nano-spec.md /your-project/.claude/commands/
-
-# 或者复制整个模板文件夹
-cp -r template/ /your-project/tasks/_template/
-```
-
-### Codex CLI
-
-```bash
-cp .codex/AGENTS.md /your-project/.codex/
-```
-
-### Gemini CLI
-
-```bash
-# 复制到项目根目录（Gemini CLI 会分层读取 GEMINI.md）
-cp .gemini/GEMINI.md /your-project/GEMINI.md
-
-# 或保留在 .gemini 文件夹
-cp -r .gemini/ /your-project/
 ```
 
 ## 工具支持
@@ -223,10 +226,16 @@ cp -r .gemini/ /your-project/
 
 ### 常用提示词速查
 
+**Claude Code 斜杠命令：**
+| 场景 | 命令 |
+|:---|:---|
+| 新建任务 | `/nano-spec create my-task "任务描述"` |
+| 查看进度 | `/nano-spec status my-task` |
+| 更新规范 | `/nano-spec update my-task "要更新的内容"` |
+
+**自然语言（所有工具通用）：**
 | 场景 | 提示词 |
 |:---|:---|
-| 新建任务 | `帮我创建一个 nano-spec：[描述]` |
-| 查看进度 | `tasks/[名称]/ 的状态怎么样了？` |
 | 更新任务 | `把 todo.md 里的 [任务] 标记为完成` |
 | 记录决策 | `在 doc.md 记录：我们选择 X 而不是 Y，因为...` |
 | 每日日志 | `在 log.md 添加今天的记录：[做了什么]` |
