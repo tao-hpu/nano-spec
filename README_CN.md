@@ -107,6 +107,13 @@ cp .gemini/GEMINI.md /your-project/GEMINI.md
 cp -r .gemini/ /your-project/
 ```
 
+### Cline (VS Code 扩展)
+
+```bash
+# 复制到项目根目录
+cp .clinerules /your-project/
+```
+
 ## 快速开始
 
 ### 手动设置
@@ -143,6 +150,13 @@ gemini -p "Create a nano-spec for: 我的任务描述"
 gemini -i "Create a nano-spec for: 我的任务描述"
 ```
 
+### 使用 Cline
+
+在 VS Code 中安装 Cline 扩展后，直接输入：
+```
+Create a nano-spec for: 我的任务描述
+```
+
 ## 工具支持
 
 | 工具 | 配置位置 | 状态 |
@@ -150,6 +164,7 @@ gemini -i "Create a nano-spec for: 我的任务描述"
 | Claude Code | `.claude/commands/nano-spec.md` | 已就绪 |
 | OpenAI Codex | `.codex/AGENTS.md` | 已就绪 |
 | Gemini CLI | `GEMINI.md` 或 `.gemini/GEMINI.md` | 已就绪 |
+| Cline | `.clinerules` | 已就绪 |
 | Cursor | 复制到 `.cursorrules` | 手动 |
 | Windsurf | 复制到 rules | 手动 |
 
@@ -189,6 +204,7 @@ gemini -i "Create a nano-spec for: 我的任务描述"
 | Claude Code | `/nano-spec create auth-feature "OAuth2 用户认证功能"` |
 | Codex CLI | `codex "Create a nano-spec for: OAuth2 用户认证功能"` |
 | Gemini CLI | `gemini -p "Create a nano-spec for: OAuth2 用户认证功能"` |
+| Cline | `Create a nano-spec for: OAuth2 用户认证功能` |
 | 手动 | `cp -r template/ tasks/auth-feature/` 然后编辑文件 |
 
 ### 第二步：开发过程中

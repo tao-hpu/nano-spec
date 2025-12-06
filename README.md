@@ -107,6 +107,13 @@ cp .gemini/GEMINI.md /your-project/GEMINI.md
 cp -r .gemini/ /your-project/
 ```
 
+### For Cline (VS Code Extension)
+
+```bash
+# Copy to project root
+cp .clinerules /your-project/
+```
+
 ## Quick Start
 
 ### Manual Setup
@@ -143,6 +150,13 @@ gemini -p "Create a nano-spec for: my task description"
 gemini -i "Create a nano-spec for: my task description"
 ```
 
+### With Cline
+
+In VS Code with Cline extension, just type:
+```
+Create a nano-spec for: my task description
+```
+
 ## Tool Support
 
 | Tool | Config Location | Status |
@@ -150,6 +164,7 @@ gemini -i "Create a nano-spec for: my task description"
 | Claude Code | `.claude/commands/nano-spec.md` | Ready |
 | OpenAI Codex | `.codex/AGENTS.md` | Ready |
 | Gemini CLI | `GEMINI.md` or `.gemini/GEMINI.md` | Ready |
+| Cline | `.clinerules` | Ready |
 | Cursor | Copy to `.cursorrules` | Manual |
 | Windsurf | Copy to rules | Manual |
 
@@ -189,6 +204,7 @@ Each document template is designed to be minimal yet complete:
 | Claude Code | `/nano-spec create auth-feature "User authentication with OAuth2"` |
 | Codex CLI | `codex "Create a nano-spec for: user authentication with OAuth2"` |
 | Gemini CLI | `gemini -p "Create a nano-spec for: user authentication with OAuth2"` |
+| Cline | `Create a nano-spec for: user authentication with OAuth2` |
 | Manual | `cp -r template/ tasks/auth-feature/` then edit files |
 
 ### Step 2: During Development
