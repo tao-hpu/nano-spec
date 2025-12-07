@@ -94,6 +94,7 @@ cp .claude/commands/nano-spec.md /your-project/.claude/commands/
 ### Codex CLI
 
 ```bash
+mkdir -p /your-project/.codex/
 cp .codex/AGENTS.md /your-project/.codex/
 ```
 
@@ -105,21 +106,33 @@ cp .gemini/GEMINI.md /your-project/GEMINI.md
 
 # 或保留在 .gemini 文件夹
 cp -r .gemini/ /your-project/
+
+# 也可以在 ~/.gemini/GEMINI.md 设置全局指令
 ```
 
 ### Cline (VS Code 扩展)
 
 ```bash
-# 复制到项目根目录
+# 单文件格式（简单）
 cp .clinerules /your-project/
+
+# 或目录格式（适合多个规则文件）
+mkdir -p /your-project/.clinerules/
+cp .clinerules /your-project/.clinerules/nano-spec.md
 ```
 
 ### Cursor
 
 ```bash
-# 复制到项目根目录
+# 新格式（推荐，带 frontmatter 的 .mdc 文件）
+mkdir -p /your-project/.cursor/rules/
+cp .cursor/rules/nano-spec.mdc /your-project/.cursor/rules/
+
+# 旧格式（仍可用，但即将废弃）
 cp .cursorrules /your-project/
 ```
+
+> **说明**：Cursor 正在从 `.cursorrules` 过渡到新的 `.cursor/rules/*.mdc` 格式。新格式支持 `description`、`globs`、`alwaysApply` 等元数据，规则管理更灵活。
 
 ### Windsurf
 
@@ -199,8 +212,8 @@ Create a nano-spec for: 我的任务描述
 | Claude Code | `.claude/commands/nano-spec.md` | 已就绪 |
 | OpenAI Codex | `.codex/AGENTS.md` | 已就绪 |
 | Gemini CLI | `GEMINI.md` 或 `.gemini/GEMINI.md` | 已就绪 |
-| Cline | `.clinerules` | 已就绪 |
-| Cursor | `.cursorrules` | 已就绪 |
+| Cline | `.clinerules` 或 `.clinerules/*.md` | 已就绪 |
+| Cursor | `.cursor/rules/nano-spec.mdc` | 已就绪 |
 | Windsurf | `.windsurfrules` | 已就绪 |
 | Trae | `.trae/rules/project_rules.md` | 已就绪 |
 | GitHub Copilot | `.github/copilot-instructions.md` | 已就绪 |
