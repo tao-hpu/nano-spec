@@ -114,6 +114,34 @@ cp -r .gemini/ /your-project/
 cp .clinerules /your-project/
 ```
 
+### Cursor
+
+```bash
+# 复制到项目根目录
+cp .cursorrules /your-project/
+```
+
+### Windsurf
+
+```bash
+# 复制到项目根目录
+cp .windsurfrules /your-project/
+```
+
+### Trae
+
+```bash
+# 复制到项目根目录（Trae 读取 .trae/rules/）
+cp -r .trae/ /your-project/
+```
+
+### GitHub Copilot
+
+```bash
+# 复制到项目根目录
+cp -r .github/ /your-project/
+```
+
 ## 快速开始
 
 ### 手动设置
@@ -157,6 +185,13 @@ gemini -i "Create a nano-spec for: 我的任务描述"
 Create a nano-spec for: 我的任务描述
 ```
 
+### 使用 Cursor / Windsurf / Trae / GitHub Copilot
+
+在这些编辑器的聊天中输入：
+```
+Create a nano-spec for: 我的任务描述
+```
+
 ## 工具支持
 
 | 工具 | 配置位置 | 状态 |
@@ -165,8 +200,24 @@ Create a nano-spec for: 我的任务描述
 | OpenAI Codex | `.codex/AGENTS.md` | 已就绪 |
 | Gemini CLI | `GEMINI.md` 或 `.gemini/GEMINI.md` | 已就绪 |
 | Cline | `.clinerules` | 已就绪 |
-| Cursor | 复制到 `.cursorrules` | 手动 |
-| Windsurf | 复制到 rules | 手动 |
+| Cursor | `.cursorrules` | 已就绪 |
+| Windsurf | `.windsurfrules` | 已就绪 |
+| Trae | `.trae/rules/project_rules.md` | 已就绪 |
+| GitHub Copilot | `.github/copilot-instructions.md` | 已就绪 |
+
+### 两类集成方式
+
+**有原生命令系统的 CLI 工具**（Claude Code、Codex CLI、Gemini CLI）：
+- 内置命令/代理/技能系统
+- 配置文件定义结构化命令，可直接调用（如 `/nano-spec create`）
+- 更强大：可定义参数、动作和工作流
+
+**模型 API 之上的 IDE 封装**（Cursor、Windsurf、Cline、Trae、Copilot）：
+- 本质是模型 API 之上的 UI 层
+- 配置文件作为系统提示词注入，引导 AI 行为
+- 只能用自然语言调用：`Create a nano-spec for: 我的任务`
+
+两种方式都能很好地工作 - 区别只在于调用方式，产出质量没有差异。
 
 ## 模板结构
 
@@ -204,7 +255,7 @@ Create a nano-spec for: 我的任务描述
 | Claude Code | `/nano-spec create auth-feature "OAuth2 用户认证功能"` |
 | Codex CLI | `codex "Create a nano-spec for: OAuth2 用户认证功能"` |
 | Gemini CLI | `gemini -p "Create a nano-spec for: OAuth2 用户认证功能"` |
-| Cline | `Create a nano-spec for: OAuth2 用户认证功能` |
+| Cline / Cursor / Windsurf / Trae / Copilot | `Create a nano-spec for: OAuth2 用户认证功能` |
 | 手动 | `cp -r template/ tasks/auth-feature/` 然后编辑文件 |
 
 ### 第二步：开发过程中

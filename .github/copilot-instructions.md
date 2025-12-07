@@ -1,0 +1,163 @@
+# nano-spec Instructions for GitHub Copilot
+
+## What is nano-spec?
+A lightweight task specification methodology using 4 documents:
+- README.md (Context)
+- todo.md (Plan + Acceptance Criteria)
+- doc.md (Technical Decisions)
+- log.md (Progress Journal)
+
+## When to Create a nano-spec
+- User asks to "create a spec for..."
+- User asks to "plan a task..."
+- User describes a multi-step development task
+- User wants to document a technical decision
+
+## How to Generate
+
+### Step 1: Understand the Task
+Ask clarifying questions if the description is vague:
+- What's the end goal?
+- What's explicitly NOT in scope?
+- Are there dependencies on other work?
+
+### Step 2: Create Files
+Generate in `tasks/{task-name}/` or project root, following the exact structure below:
+
+#### README.md
+```markdown
+# {Task Name}
+
+## Background
+{Why does this task exist? What problem are we solving?}
+
+## Goals
+- {Goal 1}
+- {Goal 2}
+
+## Scope
+
+### In Scope
+- {What's included}
+
+### Out of Scope
+- {What's NOT included - be explicit}
+
+## Dependencies
+- [ ] {Dependency 1 - e.g., another task, external API, team decision}
+
+## Resources
+- {Link to related docs}
+- {Link to external references}
+```
+
+#### todo.md
+```markdown
+# TODO
+
+## Research
+- [ ] {Research item 1}
+- [ ] {Research item 2}
+
+## Implementation
+- [ ] {Task 1}
+- [ ] {Task 2}
+- [ ] {Task 3}
+
+## Verification
+- [ ] {Verification step}
+
+---
+
+## Acceptance Criteria
+
+### Must Have
+- [ ] {Criterion 1 - specific, measurable}
+- [ ] {Criterion 2}
+
+### Nice to Have
+- [ ] {Optional criterion}
+
+### Out of Scope
+- {Explicitly NOT part of this task's acceptance}
+```
+
+#### doc.md
+```markdown
+# {Task Name} - Technical Document
+
+## Summary
+{One paragraph summary of the solution/outcome}
+
+## Key Decisions
+
+### Decision 1: {Title}
+- **Options considered**: A, B, C
+- **Chosen**: B
+- **Rationale**: {Why B?}
+
+## Technical Details
+
+### Architecture / Data Flow
+```
+{Diagram using ASCII or describe the flow}
+```
+
+### Interfaces / Schema
+```typescript
+// Key interfaces if applicable
+interface Example {
+  id: string;
+  name: string;
+}
+```
+
+### Implementation Notes
+- {Note 1}
+- {Note 2}
+
+## Open Questions
+- [ ] {Unresolved question 1}
+- [ ] {Unresolved question 2}
+
+## References
+- {Link 1}
+- {Link 2}
+```
+
+#### log.md
+```markdown
+# Development Log
+
+## {YYYY-MM-DD}
+
+### Done
+- Task created
+
+### In Progress
+- {What's ongoing}
+
+### Blocked
+- {What's stuck and why}
+
+### Notes
+- {Discoveries, learnings, things to remember}
+
+---
+
+<!-- Copy the template above for each day -->
+```
+
+### Step 3: Confirm
+Show user what was created and ask if adjustments needed.
+
+## Updating Existing Specs
+- Read all 4 files first to understand context
+- Keep acceptance criteria aligned with changes
+- Add log entry for significant updates
+
+## Key Principles
+1. Boundary first - scope before code
+2. Acceptance criteria - know when done
+3. Decisions documented - for future reference
+4. Progress logged - track the journey

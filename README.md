@@ -114,6 +114,34 @@ cp -r .gemini/ /your-project/
 cp .clinerules /your-project/
 ```
 
+### For Cursor
+
+```bash
+# Copy to project root
+cp .cursorrules /your-project/
+```
+
+### For Windsurf
+
+```bash
+# Copy to project root
+cp .windsurfrules /your-project/
+```
+
+### For Trae
+
+```bash
+# Copy to project root (Trae reads .trae/rules/)
+cp -r .trae/ /your-project/
+```
+
+### For GitHub Copilot
+
+```bash
+# Copy to project root
+cp -r .github/ /your-project/
+```
+
 ## Quick Start
 
 ### Manual Setup
@@ -157,6 +185,13 @@ In VS Code with Cline extension, just type:
 Create a nano-spec for: my task description
 ```
 
+### With Cursor / Windsurf / Trae / GitHub Copilot
+
+In any of these editors, just type in chat:
+```
+Create a nano-spec for: my task description
+```
+
 ## Tool Support
 
 | Tool | Config Location | Status |
@@ -165,8 +200,24 @@ Create a nano-spec for: my task description
 | OpenAI Codex | `.codex/AGENTS.md` | Ready |
 | Gemini CLI | `GEMINI.md` or `.gemini/GEMINI.md` | Ready |
 | Cline | `.clinerules` | Ready |
-| Cursor | Copy to `.cursorrules` | Manual |
-| Windsurf | Copy to rules | Manual |
+| Cursor | `.cursorrules` | Ready |
+| Windsurf | `.windsurfrules` | Ready |
+| Trae | `.trae/rules/project_rules.md` | Ready |
+| GitHub Copilot | `.github/copilot-instructions.md` | Ready |
+
+### Two Types of Integration
+
+**CLI tools with native command systems** (Claude Code, Codex CLI, Gemini CLI):
+- Have built-in command/agent/skill systems
+- Config files define structured commands that can be invoked directly (e.g., `/nano-spec create`)
+- More powerful: can define arguments, actions, and workflows
+
+**IDE wrappers over LLM APIs** (Cursor, Windsurf, Cline, Trae, Copilot):
+- Essentially UI layers on top of model APIs
+- Config files are injected as system prompts to guide AI behavior
+- Usage is natural language only: `Create a nano-spec for: my task`
+
+Both approaches work well — the difference is in how you invoke nano-spec, not in the output quality.
 
 ## Template Structure
 
@@ -204,7 +255,7 @@ Each document template is designed to be minimal yet complete:
 | Claude Code | `/nano-spec create auth-feature "User authentication with OAuth2"` |
 | Codex CLI | `codex "Create a nano-spec for: user authentication with OAuth2"` |
 | Gemini CLI | `gemini -p "Create a nano-spec for: user authentication with OAuth2"` |
-| Cline | `Create a nano-spec for: user authentication with OAuth2` |
+| Cline / Cursor / Windsurf / Trae / Copilot | `Create a nano-spec for: user authentication with OAuth2` |
 | Manual | `cp -r template/ tasks/auth-feature/` then edit files |
 
 ### Step 2: During Development
