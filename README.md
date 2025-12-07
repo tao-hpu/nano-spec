@@ -94,6 +94,7 @@ cp .claude/commands/nano-spec.md /your-project/.claude/commands/
 ### For Codex CLI
 
 ```bash
+mkdir -p /your-project/.codex/
 cp .codex/AGENTS.md /your-project/.codex/
 ```
 
@@ -105,21 +106,33 @@ cp .gemini/GEMINI.md /your-project/GEMINI.md
 
 # Or keep in .gemini folder
 cp -r .gemini/ /your-project/
+
+# You can also set global instructions at ~/.gemini/GEMINI.md
 ```
 
 ### For Cline (VS Code Extension)
 
 ```bash
-# Copy to project root
+# Single file format (simple)
 cp .clinerules /your-project/
+
+# Or directory format (for multiple rule files)
+mkdir -p /your-project/.clinerules/
+cp .clinerules /your-project/.clinerules/nano-spec.md
 ```
 
 ### For Cursor
 
 ```bash
-# Copy to project root
+# New format (recommended, .mdc with frontmatter)
+mkdir -p /your-project/.cursor/rules/
+cp .cursor/rules/nano-spec.mdc /your-project/.cursor/rules/
+
+# Legacy format (still works, but will be deprecated)
 cp .cursorrules /your-project/
 ```
+
+> **Note**: Cursor is transitioning from `.cursorrules` to the new `.cursor/rules/*.mdc` format. The new format supports metadata like `description`, `globs`, and `alwaysApply` for better rule management.
 
 ### For Windsurf
 
@@ -199,8 +212,8 @@ Create a nano-spec for: my task description
 | Claude Code | `.claude/commands/nano-spec.md` | Ready |
 | OpenAI Codex | `.codex/AGENTS.md` | Ready |
 | Gemini CLI | `GEMINI.md` or `.gemini/GEMINI.md` | Ready |
-| Cline | `.clinerules` | Ready |
-| Cursor | `.cursorrules` | Ready |
+| Cline | `.clinerules` or `.clinerules/*.md` | Ready |
+| Cursor | `.cursor/rules/nano-spec.mdc` | Ready |
 | Windsurf | `.windsurfrules` | Ready |
 | Trae | `.trae/rules/project_rules.md` | Ready |
 | GitHub Copilot | `.github/copilot-instructions.md` | Ready |

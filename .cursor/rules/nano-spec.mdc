@@ -1,27 +1,36 @@
 ---
-description: Manage task specifications with nano-spec (create, status, update)
+description: Nano-spec task specification methodology - create and manage lightweight task specs with 4 documents
+globs:
+alwaysApply: false
 ---
 
-# nano-spec: Manage task specifications
+# nano-spec Instructions for Cursor
 
-A lightweight task specification tool with 4 documents (README, todo, doc, log).
+## What is nano-spec?
+A lightweight task specification methodology using 4 documents:
+- README.md (Context)
+- todo.md (Plan + Acceptance Criteria)
+- doc.md (Technical Decisions)
+- log.md (Progress Journal)
 
-## Arguments
-- $ACTION: The action to perform (create, status, update)
-- $TASK_NAME: The task folder name (kebab-case recommended)
-- $DESCRIPTION: Brief description (required for create, optional for others)
+## When to Create a nano-spec
+- User asks to "create a spec for..."
+- User asks to "plan a task..."
+- User describes a multi-step development task
+- User wants to document a technical decision
 
-## Actions
+## How to Generate
 
-### create
-Create a new nano-spec task pack.
+### Step 1: Understand the Task
+Ask clarifying questions if the description is vague:
+- What's the end goal?
+- What's explicitly NOT in scope?
+- Are there dependencies on other work?
 
-**Usage**: `/nano-spec create my-task "Task description"`
+### Step 2: Create Files
+Generate in `tasks/{task-name}/` or project root, following the exact structure below:
 
-1. Create folder `tasks/$TASK_NAME/` if tasks/ exists, otherwise create at project root
-2. Generate 4 files based on the description, following the exact structure below:
-
-### README.md
+#### README.md
 ```markdown
 # {Task Name}
 
@@ -48,7 +57,7 @@ Create a new nano-spec task pack.
 - {Link to external references}
 ```
 
-### todo.md
+#### todo.md
 ```markdown
 # TODO
 
@@ -79,7 +88,7 @@ Create a new nano-spec task pack.
 - {Explicitly NOT part of this task's acceptance}
 ```
 
-### doc.md
+#### doc.md
 ```markdown
 # {Task Name} - Technical Document
 
@@ -122,7 +131,7 @@ interface Example {
 - {Link 2}
 ```
 
-### log.md
+#### log.md
 ```markdown
 # Development Log
 
@@ -145,39 +154,16 @@ interface Example {
 <!-- Copy the template above for each day -->
 ```
 
-### Output Format (create)
+### Step 3: Confirm
+Show user what was created and ask if adjustments needed.
 
-After creating files, summarize:
-```
-Created nano-spec: tasks/$TASK_NAME/
-- README.md  (background, goals, scope)
-- todo.md    (X tasks, Y acceptance criteria)
-- doc.md     (technical decisions template)
-- log.md     (initialized)
+## Updating Existing Specs
+- Read all 4 files first to understand context
+- Keep acceptance criteria aligned with changes
+- Add log entry for significant updates
 
-Next: Review and refine the generated spec
-```
-
----
-
-### status
-Show current progress of a task.
-
-**Usage**: `/nano-spec status my-task`
-
-1. Read `tasks/$TASK_NAME/todo.md` and `log.md`
-2. Summarize:
-   - Completed tasks vs total
-   - Current blockers (if any)
-   - Last log entry date
-
----
-
-### update
-Update an existing nano-spec.
-
-**Usage**: `/nano-spec update my-task "What to update"`
-
-1. Read existing files in `tasks/$TASK_NAME/`
-2. Make requested updates
-3. Add entry to log.md with today's date
+## Key Principles
+1. Boundary first - scope before code
+2. Acceptance criteria - know when done
+3. Decisions documented - for future reference
+4. Progress logged - track the journey
