@@ -110,6 +110,27 @@ cp -r .gemini/ /your-project/
 # 也可以在 ~/.gemini/GEMINI.md 设置全局指令
 ```
 
+### OpenCode
+
+```bash
+# OpenCode 读取 AGENTS.md（与 Codex 相同）
+cp .codex/AGENTS.md /your-project/AGENTS.md
+
+# 或保留在 .codex 文件夹
+cp -r .codex/ /your-project/
+```
+
+### Antigravity
+
+```bash
+# 复制到 .agent/rules/（Antigravity 项目规则目录）
+mkdir -p /your-project/.agent/rules/
+cp .agent/rules/nano-spec.md /your-project/.agent/rules/
+
+# 或使用 GEMINI.md（Antigravity 也支持）
+cp .gemini/GEMINI.md /your-project/GEMINI.md
+```
+
 ### Cline (VS Code 扩展)
 
 ```bash
@@ -191,6 +212,19 @@ gemini -p "Create a nano-spec for: 我的任务描述"
 gemini -i "Create a nano-spec for: 我的任务描述"
 ```
 
+### 使用 OpenCode
+
+```bash
+opencode "Create a nano-spec for: 我的任务描述"
+```
+
+### 使用 Antigravity
+
+在 Antigravity 的聊天中输入：
+```
+Create a nano-spec for: 我的任务描述
+```
+
 ### 使用 Cline
 
 在 VS Code 中安装 Cline 扩展后，直接输入：
@@ -212,6 +246,8 @@ Create a nano-spec for: 我的任务描述
 | Claude Code | `.claude/commands/nano-spec.md` | 已就绪 |
 | OpenAI Codex | `.codex/AGENTS.md` | 已就绪 |
 | Gemini CLI | `GEMINI.md` 或 `.gemini/GEMINI.md` | 已就绪 |
+| OpenCode | `AGENTS.md` 或 `.codex/AGENTS.md` | 已就绪 |
+| Antigravity | `.agent/rules/` 或 `GEMINI.md` | 已就绪 |
 | Cline | `.clinerules` 或 `.clinerules/*.md` | 已就绪 |
 | Cursor | `.cursor/rules/nano-spec.mdc` | 已就绪 |
 | Windsurf | `.windsurfrules` | 已就绪 |
@@ -220,12 +256,12 @@ Create a nano-spec for: 我的任务描述
 
 ### 两类集成方式
 
-**有原生命令系统的 CLI 工具**（Claude Code、Codex CLI、Gemini CLI）：
+**有原生命令系统的 CLI 工具**（Claude Code、Codex CLI、Gemini CLI、OpenCode）：
 - 内置命令/代理/技能系统
 - 配置文件定义结构化命令，可直接调用（如 `/nano-spec create`）
 - 更强大：可定义参数、动作和工作流
 
-**模型 API 之上的 IDE 封装**（Cursor、Windsurf、Cline、Trae、Copilot）：
+**模型 API 之上的 IDE 封装**（Cursor、Windsurf、Cline、Trae、Copilot、Antigravity）：
 - 本质是模型 API 之上的 UI 层
 - 配置文件作为系统提示词注入，引导 AI 行为
 - 只能用自然语言调用：`Create a nano-spec for: 我的任务`
@@ -268,7 +304,8 @@ Create a nano-spec for: 我的任务描述
 | Claude Code | `/nano-spec create auth-feature "OAuth2 用户认证功能"` |
 | Codex CLI | `codex "Create a nano-spec for: OAuth2 用户认证功能"` |
 | Gemini CLI | `gemini -p "Create a nano-spec for: OAuth2 用户认证功能"` |
-| Cline / Cursor / Windsurf / Trae / Copilot | `Create a nano-spec for: OAuth2 用户认证功能` |
+| OpenCode | `opencode "Create a nano-spec for: OAuth2 用户认证功能"` |
+| Cline / Cursor / Windsurf / Trae / Copilot / Antigravity | `Create a nano-spec for: OAuth2 用户认证功能` |
 | 手动 | `cp -r template/ tasks/auth-feature/` 然后编辑文件 |
 
 ### 第二步：开发过程中

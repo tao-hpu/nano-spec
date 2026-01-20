@@ -110,6 +110,27 @@ cp -r .gemini/ /your-project/
 # You can also set global instructions at ~/.gemini/GEMINI.md
 ```
 
+### For OpenCode
+
+```bash
+# OpenCode reads AGENTS.md (same as Codex)
+cp .codex/AGENTS.md /your-project/AGENTS.md
+
+# Or keep in .codex folder
+cp -r .codex/ /your-project/
+```
+
+### For Antigravity
+
+```bash
+# Copy to .agent/rules/ (Antigravity project rules)
+mkdir -p /your-project/.agent/rules/
+cp .agent/rules/nano-spec.md /your-project/.agent/rules/
+
+# Or use GEMINI.md (Antigravity also supports this)
+cp .gemini/GEMINI.md /your-project/GEMINI.md
+```
+
 ### For Cline (VS Code Extension)
 
 ```bash
@@ -191,6 +212,19 @@ gemini -p "Create a nano-spec for: my task description"
 gemini -i "Create a nano-spec for: my task description"
 ```
 
+### With OpenCode
+
+```bash
+opencode "Create a nano-spec for: my task description"
+```
+
+### With Antigravity
+
+In Antigravity, just type in chat:
+```
+Create a nano-spec for: my task description
+```
+
 ### With Cline
 
 In VS Code with Cline extension, just type:
@@ -212,6 +246,8 @@ Create a nano-spec for: my task description
 | Claude Code | `.claude/commands/nano-spec.md` | Ready |
 | OpenAI Codex | `.codex/AGENTS.md` | Ready |
 | Gemini CLI | `GEMINI.md` or `.gemini/GEMINI.md` | Ready |
+| OpenCode | `AGENTS.md` or `.codex/AGENTS.md` | Ready |
+| Antigravity | `.agent/rules/` or `GEMINI.md` | Ready |
 | Cline | `.clinerules` or `.clinerules/*.md` | Ready |
 | Cursor | `.cursor/rules/nano-spec.mdc` | Ready |
 | Windsurf | `.windsurfrules` | Ready |
@@ -220,12 +256,12 @@ Create a nano-spec for: my task description
 
 ### Two Types of Integration
 
-**CLI tools with native command systems** (Claude Code, Codex CLI, Gemini CLI):
+**CLI tools with native command systems** (Claude Code, Codex CLI, Gemini CLI, OpenCode):
 - Have built-in command/agent/skill systems
 - Config files define structured commands that can be invoked directly (e.g., `/nano-spec create`)
 - More powerful: can define arguments, actions, and workflows
 
-**IDE wrappers over LLM APIs** (Cursor, Windsurf, Cline, Trae, Copilot):
+**IDE wrappers over LLM APIs** (Cursor, Windsurf, Cline, Trae, Copilot, Antigravity):
 - Essentially UI layers on top of model APIs
 - Config files are injected as system prompts to guide AI behavior
 - Usage is natural language only: `Create a nano-spec for: my task`
@@ -268,7 +304,8 @@ Each document template is designed to be minimal yet complete:
 | Claude Code | `/nano-spec create auth-feature "User authentication with OAuth2"` |
 | Codex CLI | `codex "Create a nano-spec for: user authentication with OAuth2"` |
 | Gemini CLI | `gemini -p "Create a nano-spec for: user authentication with OAuth2"` |
-| Cline / Cursor / Windsurf / Trae / Copilot | `Create a nano-spec for: user authentication with OAuth2` |
+| OpenCode | `opencode "Create a nano-spec for: user authentication with OAuth2"` |
+| Cline / Cursor / Windsurf / Trae / Copilot / Antigravity | `Create a nano-spec for: user authentication with OAuth2` |
 | Manual | `cp -r template/ tasks/auth-feature/` then edit files |
 
 ### Step 2: During Development
