@@ -81,15 +81,17 @@ tasks/{task-name}/
 
 ```bash
 # User-level (available in all projects)
-mkdir -p ~/.claude/commands/
-cp .claude/commands/nano-spec.md ~/.claude/commands/
+mkdir -p ~/.claude/skills/nano-spec/
+cp .claude/skills/nano-spec/SKILL.md ~/.claude/skills/nano-spec/
 
 # Or project-level (current project only)
-mkdir -p /your-project/.claude/commands/
-cp .claude/commands/nano-spec.md /your-project/.claude/commands/
+mkdir -p /your-project/.claude/skills/nano-spec/
+cp .claude/skills/nano-spec/SKILL.md /your-project/.claude/skills/nano-spec/
 ```
 
-> **Note**: You only need the command file. When you run `/nano-spec create`, Claude will generate the 4 documents based on your description. No template folder required.
+> **Note**: You only need the skill file. When you run `/nano-spec create`, Claude will generate the 4 documents based on your description. No template folder required.
+>
+> **New in Skills format**: Claude can now understand natural language requests like "help me create a task spec for..." or "plan a new feature" and automatically invoke nano-spec.
 
 ### For Codex CLI
 
@@ -194,6 +196,10 @@ cp -r template/ tasks/my-new-task/
 ```bash
 # Use the built-in slash command
 /nano-spec create my-new-task "Brief description of the task"
+
+# Or use natural language (Skills feature)
+"Help me create a task spec for user authentication"
+"I need to plan a new feature for notifications"
 ```
 
 ### With Codex CLI
@@ -243,7 +249,7 @@ Create a nano-spec for: my task description
 
 | Tool | Config Location | Status |
 |:---|:---|:---:|
-| Claude Code | `.claude/commands/nano-spec.md` | Ready |
+| Claude Code | `.claude/skills/nano-spec/SKILL.md` | Ready |
 | OpenAI Codex | `.codex/AGENTS.md` | Ready |
 | Gemini CLI | `GEMINI.md` or `.gemini/GEMINI.md` | Ready |
 | OpenCode | `AGENTS.md` or `.codex/AGENTS.md` | Ready |
@@ -256,10 +262,11 @@ Create a nano-spec for: my task description
 
 ### Two Types of Integration
 
-**CLI tools with native command systems** (Claude Code, Codex CLI, Gemini CLI, OpenCode):
+**CLI tools with native skill/command systems** (Claude Code, Codex CLI, Gemini CLI, OpenCode):
 - Have built-in command/agent/skill systems
 - Config files define structured commands that can be invoked directly (e.g., `/nano-spec create`)
 - More powerful: can define arguments, actions, and workflows
+- **Claude Code Skills bonus**: Can also be triggered by natural language (e.g., "help me plan a task")
 
 **IDE wrappers over LLM APIs** (Cursor, Windsurf, Cline, Trae, Copilot, Antigravity):
 - Essentially UI layers on top of model APIs

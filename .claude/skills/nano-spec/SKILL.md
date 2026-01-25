@@ -1,5 +1,6 @@
 ---
-description: Manage task specifications with nano-spec (create, status, update)
+name: nano-spec
+description: Manage task specifications with nano-spec (create, status, update). Supports natural language like "create a task spec for..." or "help me plan a task".
 ---
 
 # nano-spec: Manage task specifications

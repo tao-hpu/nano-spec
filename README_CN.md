@@ -81,15 +81,17 @@ tasks/{任务名}/
 
 ```bash
 # 用户级别（所有项目可用）
-mkdir -p ~/.claude/commands/
-cp .claude/commands/nano-spec.md ~/.claude/commands/
+mkdir -p ~/.claude/skills/nano-spec/
+cp .claude/skills/nano-spec/SKILL.md ~/.claude/skills/nano-spec/
 
 # 或项目级别（仅当前项目）
-mkdir -p /your-project/.claude/commands/
-cp .claude/commands/nano-spec.md /your-project/.claude/commands/
+mkdir -p /your-project/.claude/skills/nano-spec/
+cp .claude/skills/nano-spec/SKILL.md /your-project/.claude/skills/nano-spec/
 ```
 
-> **说明**：只需要命令文件即可。当你运行 `/nano-spec create` 时，Claude 会根据你的描述自动生成 4 个文档，不需要 template 文件夹。
+> **说明**：只需要 skill 文件即可。当你运行 `/nano-spec create` 时，Claude 会根据你的描述自动生成 4 个文档，不需要 template 文件夹。
+>
+> **Skills 格式新特性**：Claude 现在能理解自然语言请求，如"帮我创建一个任务规范"或"规划一个新功能"，会自动调用 nano-spec。
 
 ### Codex CLI
 
@@ -194,6 +196,10 @@ cp -r template/ tasks/my-new-task/
 ```bash
 # 使用内置的斜杠命令
 /nano-spec create my-new-task "任务的简要描述"
+
+# 或使用自然语言（Skills 特性）
+"帮我创建一个用户认证的任务规范"
+"我需要规划一个通知功能"
 ```
 
 ### 使用 Codex CLI
@@ -243,7 +249,7 @@ Create a nano-spec for: 我的任务描述
 
 | 工具 | 配置位置 | 状态 |
 |:---|:---|:---:|
-| Claude Code | `.claude/commands/nano-spec.md` | 已就绪 |
+| Claude Code | `.claude/skills/nano-spec/SKILL.md` | 已就绪 |
 | OpenAI Codex | `.codex/AGENTS.md` | 已就绪 |
 | Gemini CLI | `GEMINI.md` 或 `.gemini/GEMINI.md` | 已就绪 |
 | OpenCode | `AGENTS.md` 或 `.codex/AGENTS.md` | 已就绪 |
@@ -256,10 +262,11 @@ Create a nano-spec for: 我的任务描述
 
 ### 两类集成方式
 
-**有原生命令系统的 CLI 工具**（Claude Code、Codex CLI、Gemini CLI、OpenCode）：
+**有原生技能/命令系统的 CLI 工具**（Claude Code、Codex CLI、Gemini CLI、OpenCode）：
 - 内置命令/代理/技能系统
 - 配置文件定义结构化命令，可直接调用（如 `/nano-spec create`）
 - 更强大：可定义参数、动作和工作流
+- **Claude Code Skills 额外福利**：支持自然语言触发（如"帮我规划一个任务"）
 
 **模型 API 之上的 IDE 封装**（Cursor、Windsurf、Cline、Trae、Copilot、Antigravity）：
 - 本质是模型 API 之上的 UI 层
